@@ -26,7 +26,7 @@ enum JSONRPC_2_0 {
         init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let string = try? container.decode(String.self) {
-                self = .string(string)
+                self = .string(String(string.dropLast(3)))
             } else if let int = try? container.decode(Int.self) {
                 self = .int(int)
             } else if let double = try? container.decode(Double.self) {
